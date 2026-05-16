@@ -219,3 +219,5 @@ __marimo__/
 .streamlit/secrets.toml
 
 asses_details.txt
+
+data

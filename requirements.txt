@@ -4,3 +4,7 @@ openai
 pydantic
 pydantic-settings
 python-dotenv
+chromadb
+sentence-transformers
+pypdf2
+python-multipart

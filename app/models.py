@@ -1,9 +1,10 @@
 from pydantic import BaseModel, Field
-from typing import Optional
+from typing import Optional, List, Dict, Any
 
 class ChatRequest(BaseModel):
     session_id: str = Field(..., description="Unique session identifier")
     message: str = Field(..., description="User message")
+    use_rag: bool = Field(default=False, description="Whether to use RAG for this query")
 
 class ChatResponse(BaseModel):
     session_id: str
@@ -13,3 +14,13 @@ class UploadResponse(BaseModel):
     filename: str
     status: str
     chunks: int
+    message: str
+
+class DebugSearchRequest(BaseModel):
+    query: str = Field(..., description="Search query")
+    top_k: int = Field(default=5, description="Number of results to return")
+
+class DebugSearchResponse(BaseModel):
+    query: str
+    top_k: int
+    results: List[Dict[str, Any]]
