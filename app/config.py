@@ -13,6 +13,10 @@ class Settings(BaseSettings):
     EMBEDDING_MODEL: str = "all-MiniLM-L6-v2"
     CHROMA_PERSIST_DIR: str = "./data/chroma_db"
     
+    EVALUATOR_MODEL: str = "groq/compound"
+    EVALUATOR_TEMPERATURE: float = 0.1
+    WEB_SEARCH_ENABLED: bool = False
+    
     SYSTEM_PROMPT: str = """You are a knowledgeable and helpful AI assistant. 
 You provide clear, accurate, and conversational responses. 
 When you don't know something, you admit it honestly.
