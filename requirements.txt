@@ -9,3 +9,7 @@ chromadb
 sentence-transformers
 pypdf2
 python-multipart
+requests
+langchain
+langchain-groq
+langchain-community

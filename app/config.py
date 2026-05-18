@@ -7,6 +7,12 @@ class Settings(BaseSettings):
     TEMPERATURE: float = 0.0
     MAX_TOKENS: int = 2048
     
+    LANGSEARCH_API_KEY: str = ""
+    
+    AGENT_MODEL: str = "llama-3.3-70b-versatile"
+    AGENT_TEMPERATURE: float = 0.0
+    AGENT_MAX_TOKENS: int = 4096
+    
     CHUNK_SIZE: int = 800
     CHUNK_OVERLAP: int = 200
     TOP_K_RESULTS: int = 3

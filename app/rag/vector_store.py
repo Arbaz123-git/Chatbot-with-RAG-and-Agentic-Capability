@@ -65,5 +65,13 @@ class VectorStore:
             name="documents",
             metadata={"hnsw:space": "cosine"}
         )
+    
+    def has_documents(self) -> bool:
+        """Check if any documents have been uploaded to the vector store."""
+        try:
+            count = self.collection.count()
+            return count > 0
+        except:
+            return False
 
 vector_store = VectorStore()

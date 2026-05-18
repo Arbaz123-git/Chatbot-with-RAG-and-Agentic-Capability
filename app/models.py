@@ -4,7 +4,8 @@ from typing import Optional, List, Dict, Any
 class ChatRequest(BaseModel):
     session_id: str = Field(..., description="Unique session identifier")
     message: str = Field(..., description="User message")
-    use_rag: bool = Field(default=False, description="Whether to use RAG for this query")
+    use_rag: Optional[bool] = Field(default=None, description="Whether to use RAG. If None, auto-detect.")
+    use_agent: Optional[bool] = Field(default=None, description="Whether to use agent. If None, auto-detect.")
 
 class ChatResponse(BaseModel):
     session_id: str
