@@ -342,6 +342,26 @@ while (true) {
 
 ---
 
+## Technology Stack
+
+| Component | Suggested Options | What We Used | Why |
+|-----------|-------------------|--------------|-----|
+| **Language** | Python | Python ✓ | Standard choice for AI/ML applications |
+| **LLM** | OpenAI GPT-4o, Anthropic Claude, Google Gemini | **Groq API** (`openai/gpt-oss-120b`, `llama-3.3-70b-versatile`) | Groq offers extremely fast inference speeds with free tier access. The `openai/gpt-oss-120b` model was chosen for RAG generation as it properly utilizes document context (see Design Decisions below). |
+| **Vector DB** | ChromaDB, FAISS, Pinecone | ChromaDB ✓ | Lightweight, easy to set up, supports local persistence, no external service required |
+| **Framework** | FastAPI | FastAPI ✓ | Async support, automatic OpenAPI docs, excellent for streaming responses |
+| **Agent Framework** | LangChain, LangGraph, LlamaIndex | **Custom implementation** with LangChain components | Built a lightweight custom agent loop for better control over tool execution and streaming. Uses LangChain for Groq integration but handles the agent logic manually for flexibility. |
+| **Embeddings** | - | Sentence Transformers (`all-MiniLM-L6-v2`) | Fast, lightweight, runs locally without API calls |
+
+### Why Groq Instead of OpenAI/Anthropic/Google?
+
+1. **Speed**: Groq's LPU (Language Processing Unit) provides significantly faster inference compared to traditional GPU-based APIs
+2. **Cost**: Generous free tier for development and testing
+3. **Compatibility**: Groq API is OpenAI-compatible, making it easy to switch models or providers if needed
+4. **Model Variety**: Access to multiple open-source models (Llama, openai/gpt-oss-120b, etc.) through a single API
+
+---
+
 ## Design Decisions & Lessons Learned
 
 This section documents approaches that were tried during development and why the current implementation was chosen.
